@@ -2,7 +2,7 @@ import contact from "../data/contact.js"
 
 function Contact() {
     return (
-        <main>
+        <main className="page page-contact">
             <h1>Contact</h1>
             <p>
                 <b>Email: </b><a href={`mailto:${contact.email}`}>{ contact.email }</a>

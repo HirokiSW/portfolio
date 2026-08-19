@@ -2,7 +2,7 @@ import contact from "../data/contact.js"
 
 function Footer() {
     return (
-        <footer>
+        <footer className="footer">
             <div className="footer-links">
                 <a href={`mailto:${contact.email}`}>Email</a>
                 <a href={contact.githubUrl} target="_blank" rel="noreferrer">GitHub</a>

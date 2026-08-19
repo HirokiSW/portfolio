@@ -1,0 +1,385 @@
+# Code Summary for: C:\Users\watan\Documents\FrontendProjects\portfolio-frontend
+
+### index.html
+```
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>portfolio-frontend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+```
+
+### src\App.jsx
+```
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import NavigationBar from "./components/NavigationBar.jsx"
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import About from './pages/About'
+import Skills from './pages/Skills'
+import Projects from './pages/Projects'
+import Contact from './pages/Contact'
+
+function App() {
+    return (
+        <BrowserRouter>
+            <NavigationBar />
+            <Routes>
+                <Route path="/" element={<Navigate to="/home" replace />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/skills" element={<Skills />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+            <Footer />
+        </BrowserRouter>
+    )
+}
+
+export default App
+
+```
+
+### src\components\Footer.jsx
+```
+import contact from "../data/contact.js"
+
+function Footer() {
+    return (
+        <footer>
+            <div className="footer-links">
+                <a href={`mailto:${contact.email}`}>Email</a>
+                <a href={contact.githubUrl} target="_blank" rel="noreferrer">GitHub</a>
+                <a href={contact.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+        </footer>
+    )
+}
+
+export default Footer
+```
+
+### src\components\NavigationBar.jsx
+```
+import { Link } from 'react-router-dom'
+
+function NavigationBar() {
+    return (
+        <nav>
+            <Link to="/home">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/skills">Skills</Link>
+            <Link to="/projects">Projects</Link>
+            <Link to="/contact">Contact</Link>
+            <button>Toggle theme</button>
+        </nav>
+    )
+}
+
+export default NavigationBar
+```
+
+### src\components\ProjectCard.jsx
+```
+function ProjectCard({ title, description, stack, githubUrl, demoUrl }) {
+    return (
+        <div className="project-card">
+            <h3>{ title }</h3>
+            <p>{ description }</p>
+
+            <ul className="stack-list">
+                { stack.map((item) => (
+                    <li key={ item }>{ item }</li>
+                )) }
+            </ul>
+
+            <div className="project-links">
+                <a href={ githubUrl } target="_blank" rel="noreferrer">GitHub</a> <br />
+                { demoUrl && (
+                    <a href={ demoUrl } target="_blank" rel="noreferrer">Demo</a>
+                ) }
+            </div>
+        </div>
+    )
+}
+
+export default ProjectCard
+```
+
+### src\components\SkillCard.jsx
+```
+function SkillCard ({ category, items }) {
+    return (
+        <div className="skill-card">
+            <h3>{ category }</h3>
+
+            <ul className="skills-list">
+                { items.map((item) => (
+                    <li key={ item }>{ item }</li>
+                )) }
+            </ul>
+        </div>
+    )
+}
+
+export default SkillCard
+```
+
+### src\data\about.js
+```
+const about = {
+    bio: "I'm a computer science student at Ateneo de Manila University, currently transitioning into my third year with a focus on backend development.",
+    education: "BS Computer Science, Ateneo de Manila University",
+    interests: "Reading, 3D Modelling, Chess"
+}
+
+export default about
+```
+
+### src\data\contact.js
+```
+const contact = {
+    email: "watanabehiroki512@gmail.com",
+    githubUrl: "https://github.com/HirokiSW",
+    linkedinUrl: "https://www.linkedin.com/in/hiroki-watanabe-a5b3323b1/",
+    resumeUrl: "resume.pdf"
+}
+
+export default contact
+```
+
+### src\data\home.js
+```
+const home = {
+    name: "Hello, I'm Hiroki",
+    tagline: "Aspiring Backend developer & CS student",
+    intro: "Interested in building backend systems in Java and Spring Boot."
+}
+
+export default home
+```
+
+### src\data\projects.js
+```
+const projects = [
+    {
+        id: 1,
+        title: "Session Enlistment API",
+        description: "Backend REST API for managing event sessions and attendee enlistment, with capacity and duplicate-entry validation.",
+        stack: ["Java", "Spring Boot", "H2"],
+        githubUrl: "https://github.com/HirokiSW/event-enlistment-api",
+        demoUrl: "https://github.com/HirokiSW/event-enlistment-api"
+    },
+    {
+        id: 2,
+        title: "3D Renderer From Scratch",
+        description: "PLACEHOLDER DESCRIPTION",
+        stack: ["Java"],
+        githubUrl: "https://github.com/HirokiSW/3d-renderer",
+        demoUrl: ""
+    },
+    {
+        id: 3,
+        title: "Multiplayer Pixel Shooter",
+        description: "PLACEHOLDER DESCRIPTION",
+        stack: ["Java"],
+        githubUrl: "https://github.com/HirokiSW/pixel-shooter-multiplayer",
+        demoUrl: ""
+    },
+    {
+        id: 4,
+        title: "FoodJournal",
+        description: "Android restaurant and food review/journal app with camera integration.",
+        stack: ["Java", "Android", "Realm"],
+        githubUrl: "https://github.com/HirokiSW/food-journal",
+        demoUrl: ""
+    },
+    {
+        id: 5,
+        title: "Tasklist",
+        description: "Full-stack to-do list app with a Spring Boot backend and React frontend.",
+        stack: ["Java", "Spring Boot", "React"],
+        githubUrl: "https://github.com/HirokiSW/tasklist-api",
+        demoUrl: ""
+    }
+]
+
+export default projects
+```
+
+### src\data\skills.js
+```
+const skills = [
+    {
+        id: 1,
+        category: "Languages",
+        items: ["Java", "Kotlin", "JavaScript", "Python"],
+    },
+    {
+        id: 2,
+        category: "Backend",
+        items: ["Spring Boot", "REST APIs"]
+    },
+    {
+        id: 3,
+        category: "Databases",
+        items: ["PostgreSQL", "H2"]
+    },
+    {
+        id: 4,
+        category: "Tools",
+        items: ["Git", "Postman", "IntelliJ"]
+    }
+]
+
+export default skills
+```
+
+### src\index.css
+```
+
+```
+
+### src\main.jsx
+```
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+```
+
+### src\pages\About.jsx
+```
+import about from "../data/about.js"
+
+function About() {
+    return (
+        <main>
+            <h1>About</h1>
+            <p>
+                <b>Bio: </b>{ about.bio }
+            </p>
+            <p>
+                <b>Education: </b>{ about.education }
+            </p>
+            <p>
+                <b>Interests: </b>{ about.interests }
+            </p>
+        </main>
+    )
+}
+
+export default About
+```
+
+### src\pages\Contact.jsx
+```
+import contact from "../data/contact.js"
+
+function Contact() {
+    return (
+        <main>
+            <h1>Contact</h1>
+            <p>
+                <b>Email: </b><a href={`mailto:${contact.email}`}>{ contact.email }</a>
+            </p>
+            <p>
+                <b>GitHub: </b><a href={ contact.githubUrl } target="_blank" rel="noreferrer">{ contact.githubUrl }</a>
+            </p>
+            <p>
+                <b>LinkedIn: </b><a href={ contact.linkedinUrl } target="_blank" rel="noreferrer">{ contact.linkedinUrl }</a>
+            </p>
+            <p>
+                <b>Resume: </b><a href={ contact.resumeUrl } target="_blank" rel="noreferrer">{ contact.resumeUrl }</a>
+            </p>
+        </main>
+    )
+}
+
+export default Contact
+```
+
+### src\pages\Home.jsx
+```
+import home from "../data/home"
+
+function Home() {
+    return (
+        <main>
+            <h1>Home</h1>
+            <p>{ home.name }</p>
+            <p>{ home.tagline }</p>
+            <p>{ home.intro }</p>
+        </main>
+    )
+}
+
+export default Home
+```
+
+### src\pages\Projects.jsx
+```
+import projects from "../data/projects.js"
+import ProjectCard from "../components/ProjectCard"
+
+function Projects() {
+    return (
+        <main>
+            <h1>Projects</h1>
+            { projects.map((proj) => (
+                <ProjectCard key={ proj.id } { ...proj } />
+            )) }
+        </main>
+    )
+}
+
+export default Projects
+```
+
+### src\pages\Skills.jsx
+```
+import skills from "../data/skills.js"
+import SkillCard from "../components/SkillCard"
+
+function Skills() {
+    return (
+        <main>
+            <h1>Skills</h1>
+            { skills.map((skill) => (
+                <SkillCard key={ skill.id } { ...skill } />
+            )) }
+        </main>
+    )
+}
+
+export default Skills
+```
+
+### vite.config.js
+```
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+
+```

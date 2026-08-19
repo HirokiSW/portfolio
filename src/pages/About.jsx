@@ -2,7 +2,7 @@ import about from "../data/about.js"
 
 function About() {
     return (
-        <main>
+        <main className="page page-about">
             <h1>About</h1>
             <p>
                 <b>Bio: </b>{ about.bio }

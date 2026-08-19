@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 2px solid #333;
+}
+
+.footer {
+    padding: 1rem;
+    border-top: 2px solid #333;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.page {
+    padding: 2rem;
+    min-height: 60vh;
+}
+
+.page-home {
+    background: #fef6e4;
+}
+
+.page-about {
+    background: #e4f0fe;
+}
+
+.page-skills {
+    background: #e4fef0;
+}
+
+.page-projects {
+    background: #fee4f0;
+}
+
+.page-contact {
+    background: #f0e4fe;
+}
+
+.project-card {
+    border: 1px solid #393939;
+    border-radius: 6px;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    background: #ffffff;
+}
+
+.skill-card {
+    border: 1px solid #393939;
+    border-radius: 6px;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    background: #ffffff;
+}
